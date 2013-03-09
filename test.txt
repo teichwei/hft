@@ -5,8 +5,9 @@ feaf
 afeajkflejalfjj
 
 function hello {
-	print hello;
 	print goodbye;
-
-	if ( blue == red ){
+	if ( purple == red ){
 	}}
+	print hello;
+
+	
