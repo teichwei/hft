@@ -1,0 +1,149 @@
+/* -----------------------------------------------------------------------------
+ * person-pane css
+ * ---------------------------------------------------------------------------*/
+div#person_pane {
+    position: absolute;
+    top: 0px;       /* relative to body_container */
+    left: 750px;    /* relative to body_container */
+    width: 254px;
+    height: 738px;
+    background-color: green;    
+}
+/* synop div contains portait and synopbox with 4 lines of person-summary */
+div#synop {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    width: 253px;
+    height: 100px;
+    background-color: beige;
+    border-width: thin;
+    border-style: solid;
+    border-color: darkblue;
+}
+div#pictureframe {
+    background-margin: 0px;
+    background-padding: 0px;
+    background-image: url(../ftc-images/PicFrame1.jpg);
+    background-size: 100% auto, auto auto;
+    width: 84px;
+    height: 105px;
+    max-width: 84px;
+    max-height: 105px;
+    margin: 0px;
+}
+img#portrait {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: 53px;
+    max-height: auto;
+}
+div#synopbox {
+    position: absolute;
+    top: 0px;
+    left: 94px;
+    width: 180px;
+    height: 100px;
+}
+/* list of 4 text-lines that summarizes the person */
+div#synopbox ul {
+    position: absolute;
+    top: -10px;
+    left: -42px;
+    list-style-type: none;
+}
+div#synopbox li {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: italic;
+}
+/* small bar containing info-boards select */
+div#cat_selectbar {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 254px;
+    height: 24px;
+    background-color: silver;
+}
+/* button3 is the selection management button, with + as label */
+span#button3 {
+    width: 22px;
+    height: 20px;
+    margin-left: 2px;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+/* select dropdown */
+div#cat_selectbar select {
+    margin-top: 1px;
+    margin-left: 0px;
+    margin-bottom: 1px;
+    width: 190px;
+    height: 22px;
+}
+/* button4 is infor-board settings button, with a wrench button*/
+span#button4 {
+    width: 22px;
+    height: 20px;
+    margin-left: 1px;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+/* the scrollable list body of info-board */
+div#infos {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 254px;
+    height: 586px;
+    overflow: auto;
+    background-color: #CCCCFF;
+    border-top-color: #DDCCFF;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-bottom-color: #DDCCFF;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+/* list style for the list in info-board body */
+div#infos ul {
+    margin-top: 0px;
+    margin-left: -18px;
+}
+div#personpane_bottombar {
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 25px;
+    width: 254px;
+    background-color: silver;
+}
+span#button5 {
+    width: 150px;
+    height: 20px;
+    margin-left: 15px;
+    margin-top: 1px;
+}
+span#button100 {
+    width: 30px;
+    height: 20px;
+    margin-left: 8px;
+    margin-top: 1px;
+}
+
+td.Dlg_newib_label {
+    width: 150px;
+}
+
+/* select for ib categories */
+div#Dlg_newib select#ib_select {
+    width: 260px;
+}
+
+/* select for access control */
+div#Dlg_newib select#ib_acc_select {
+    width: 260px;
+}
+/* button4 is infor-board settings button, with a wrench button*/
+/* -----------------------------------------------------------------------------
+ * synop-container
+ * infotabs-container
+ * */

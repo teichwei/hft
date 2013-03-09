@@ -1,0 +1,213 @@
+/*---------------------------------------------------------------------------
+ * css style sheet for frame and title-bar and are on the title bar
+ *---------------------------------------------------------------------------*/
+html {
+    overflow: auto;
+    height: 845px;
+    min-width: 1024px; /* this makes horizontal scroll of the page work */
+    min-height: 815px;
+}
+    
+/* */
+body { 
+    scroll: no;
+    overflow: hidden;
+    margin: 0px auto;
+    /* margin:0px;*/
+    padding:0px; 
+    font-family: Georgia, "Times New Roman", Times, serif;
+    /* ---------------------------------------------------------
+     * image shown outside the ftc-app's max border (1000 x 800)
+     * */
+    /*
+    background-image: url("light-gold-fabric-background.jpg");   
+    * */
+    background-image: url("../ftc-images/red_curtain.jpg");   
+    
+    background-repeat: no-repeat;               /* don't repeat bg-pic */
+    background-size: cover;                     /* scale the bg-pic to fit */
+}
+/* -----------------------------------------------------------------------------
+ * ftc frame: max boundary of ftc app. Over the border, it will show the 
+ * background image 
+ * */
+div#ftc-frame {
+    position: relative; /* this makes the frame flowing centered in page */
+    top: 0px; /* leaves 12 px from top */
+    left: 0px;
+    margin-top: 10px;
+    
+    margin-left: auto;      /*  by putting these 2 lines, no outer div */
+    margin-right: auto;     /* is needed to center the frame div       */
+    
+    /* 7 mm wider than nytimes.com or cnet.com, same as cnn.com */
+    width: 1004px;  
+    height: 800px;
+    background: beige;
+}
+/* -----------------------------------------------------------------------------
+ * title bar contains language choice button, logo, loginbutton,(oggedin)username
+ * family-choice, accountsetting-button
+ * ----------------*/
+div#ftc-titlebar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* width: 998px; if omit this, it will tak container's width */
+    height: 60px;	/* 800 - (60+2) = 738 */
+    width: 1004px;
+    border-top-width: thin;
+    border-bottom-width: thin;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-style: solid;
+    border-top-color: silver;
+    border-bottom-color: darksilver;
+    background: #007e7e;	/* bluish green background color: TBD */
+}
+div#ftclogo {
+    position: absolute;
+    font-family: fantasy;
+    font-style: italic;
+    font-stretch: expanded;
+    font-size: 34px;
+    width: 200px;
+    height: 36px;
+    left: 240px;
+    top: 6px;    
+}
+img#logoicon {
+    position: absolute;
+    top: 7px;
+    left: 180px;
+    max-height: 48px;
+}
+/* button1 is login/logout button */
+span#button1 {
+    position: absolute;
+    font-size : 12px;
+    width: 110px;
+    height: 26px;
+    left: 886px;
+    top: 30px;
+}
+/* button2 is account settings: shows up only after logged in */
+span#button2 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 864px;
+    top: 34px;
+}
+/* user name as a label. Only shows up after logged in */
+div#username {
+    position: absolute;
+    width: 200px;
+    height: 24px;
+    left: 884px;
+    top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+ * style for language select dropdown
+ */
+dl.lang_dropdown { 
+    font-family:Arial, Helvetica, Sans-Serif; 
+    font-size:0.75em; 
+    color:#000;
+}
+.lang_dropdown dt {
+    margin-left: 5px; 
+    margin-top: 31px;
+    padding: 0px;
+}
+.lang_dropdown dd { 
+    padding:0px; 
+    margin-left: 0px; 
+    margin-top: 0px
+} 
+
+.lang_dropdown ul { 
+    padding:0px; 
+    margin-left: 1px; 
+    margin-top: 0px
+}
+.lang_dropdown dd { 
+    position: relative; 
+    z-index: 20;
+}
+.lang_dropdown a, .lang_dropdown a:visited { 
+    color:#816c5b; 
+    text-decoration:none; 
+    outline:none;
+}
+.lang_dropdown a:hover { 
+    color:#5d4617;
+}
+.lang_dropdown dt a:hover { 
+    color:#5d4617; 
+    border: 1px solid #d0c9af;
+}
+.lang_dropdown dt a {
+    background:#e4dfcb url(../ftc-images/arrow.png) no-repeat scroll right center; 
+    display:block; 
+    padding-right:0px;
+    border:1px solid #d4ca9a; 
+    width:150px;
+}
+.lang_dropdown dt a span {
+    cursor:pointer; 
+    display:block; 
+    padding:5px;
+}
+.lang_dropdown dd ul { 
+    background:#e4dfcb none repeat scroll 0 0; 
+    border:1px solid #d4ca9a; 
+    color:#C5C0B0; 
+    display:none;
+    left:0px; 
+    padding:1px 0px; 
+    position:absolute; 
+    top:1px; 
+    width:auto; 
+    min-width:170px; 
+    list-style:none;
+}
+.lang_dropdown span.value { 
+    display:none;
+}
+.lang_dropdown dd ul li a { 
+    padding: 5px; 
+    display:block;
+}
+.lang_dropdown dd ul li a:hover { 
+    background-color:#d0c9af;
+}
+
+.lang_dropdown img.flag { 
+    border:none; 
+    vertical-align:middle; 
+    margin-left:6px; 
+    margin-right: 10px;
+    margin-top:0px; 
+    margin-bottom: 0px;
+    max-width: 25px;
+    max-height: 19px;
+}
+/* ---------------------------------------
+ * End of language select dropdown style
+ *--------------------------------------- */
+/* --------------------------------------------------------------------------
+ * end of title bar
+ *---------------------------------------------------------------------------*/
+/* --------------------------------------------------------------------------
+ * body that contains familypane and personpane
+ * --------------------------------------------------------------------------*/
+div#body_container {
+    position: absolute;	/* absolute to the relatively positioned frame */
+    top: 62px; /* titlebar height: 62px = 60px + 1*2 top/bottom border width */
+    left: 0px;	
+    width: 1004px;
+    height: 738px; /* = 800 - 62 */
+    background-color: black;
+}

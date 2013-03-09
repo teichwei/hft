@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html charset='utf-8'>
+  <head>
+    <meta charset='utf-8' />
+    <title>HFT 0.1.4c</title>
+
+    <!-- -->
+    <!-- jQuery javascript library -->
+    <!--
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+    -->
+    <script type="text/javascript" src="js/jquery.js" ></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
+    <script src = "js/jquery-ui-1.10.0.custom.min.js"></script>
+    <!--
+    <script src="/_utils/script/jquery.couch.js"></script>
+    -->
+    <script src="js/jquery.couch.js"></script>
+    <script src="vendor/couchapp/jquery.couch.app.js"></script>
+    <script src="vendor/couchapp/jquery.couch.app.util.js"></script>
+    
+    <!-- -->
+    <!-- FTC css -->
+    <link rel=stylesheet type=text/css href="css/frame.css" />
+    <link rel=stylesheet type=text/css href="css/family_pane.css" />
+    <link rel=stylesheet type=text/css href="css/person_pane.css" />
+
+    <!-- -->
+    <!-- FTC programs -->
+    <script src="js/title_bar.js"></script>    
+    <script src="js/family_pane.js"></script>    
+    <script src="js/person_pane.js"></script>
+    <script src='js/locale_dict.js'></script>
+    <script src="js/basics.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/init.js"></script>    
+  </head>
+  <body onload="pageload()">
+    <div id='ftc-frame'>
+        <!-- -->
+        <!-- dialog popups, not showing up till triggered -->
+        <!-- -->
+        <!-- login dialog popup -->
+        <div id="Dlg_login">
+            <table>
+                <tr><td><span class='LS' tag='M1501'>UserID</span>:</td>
+                    <td><input id='login_userid'/></td></tr>
+                <tr><td><span class='LS' tag='M1504'></span>:</td>
+                    <td><input id='login_password'/></td></tr>
+            </table>
+        </div>
+        
+        <!-- account settings dialog popup -->
+        <div id="Dlg_account_settings" title="Account settings">
+            Account setting dialog content
+        </div>
+        
+        <!-- dialog for creating a new personal info-board -->
+        <div id='Dlg_newib'>
+            <table>
+                <tr><td class='Dlg_newib_label'>
+                    <!-- Category label -->
+                    <span class='LS' tag='M7015'></span>:
+                    </td><td>
+                    <select id='ib_select'></select>
+                </td></tr>
+                <tr><td class='Dlg_newib_label'>
+                    <span class='LS' tag='M7501'></span>:
+                    </td><td>
+                    <select id='ib_acc_select'>
+                    </select>
+                    <input id='ib_req_pwd' type='checkbox' value='reqire password'/>
+                    <span class='LS' tag='M7503'></span>
+                </td></tr>
+                <tr><td class='Dlg_newib_label'><span class='LS' tag='M7504'></span>:
+                </td><td>
+                <input type='text' id='ib_descr' size="50"/></td></tr>
+            </table>
+        </div>
+        <!-- -->
+        <!-- end of dialogs -->
+        <!-- -->
+        <span id="_test" margin="20" class="status-message ui-corner-all">TEST NAV text</span>
+        
+        <!-- title pane -->
+        <div id='ftc-titlebar'>
+            <div id="language_select">
+            <dl id="lang_dropdown" class="lang_dropdown">
+                <dt><a href="#"><span id='button0'>Country / language</span></a></dt>
+                <dd>
+                    <ul>
+                        <li><a href="#"><img class="flag" src="ftc-images/Brazil.gif" alt="" />
+                            Brazil<span class="value">pt</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/China.gif" alt="" />
+                            China<span class="value">zh</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Cuba.gif" alt="" />
+                            Cuba<span class="value">es</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/France.gif" alt="" />
+                            France
+                            <span class="value">fr</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Finland.gif" alt="" />
+                            Finland
+                            <span class="value">fi</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Germany.gif" alt="" />
+                            Germany<span class="value">de</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Hungary.gif" alt="" />
+                            Hungary<span class="value">hu</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/India.gif" alt="" />
+                            India<span class="value">en</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Italy.gif" alt="" />
+                            Italy<span class="value">it</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Japan.gif" alt="" />
+                            Japan<span class="value">ja</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Korea.gif" alt="" />
+                            Korea<span class="value">ko</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Norway.gif" alt="" />
+                            Norway<span class="value">no</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Peru.gif" alt="" />
+                            Peru<span class="value">es</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Poland.gif" alt="" />
+                            Poland<span class="value">pl</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Portugal.gif" alt="" />
+                            Portugal<span class="value">pt</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Russia.gif" alt="" />
+                            Russia<span class="value">ru</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Serbia.gif" alt="" />
+                            Serbia<span class="value">cs</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Singapore.gif" alt="" />
+                            Singapore<span class="value">en</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Spain.gif" alt="" />
+                            Spain<span class="value">es</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Switzerland.gif" alt="" />
+                            Switzerland<span class="value">de</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Thailand.gif" alt="" />
+                            Thailand<span class="value">th</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Turkey.gif" alt="" />
+                            Turkey<span class="value">es</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/United-Kingdom.gif" alt="" />
+                            United Kingdom<span class="value">en</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/USA.gif" alt="" />
+                            United States<span class="value">en</span>
+                            </a></li>
+                        <li><a href="#"><img class="flag" src="ftc-images/Vietnam.gif" alt="" />
+                            Vietnam<span class="value">en</span>
+                            </a></li>
+                    </ul>
+                </dd>
+            </dl>
+            </div><!-- end of div#language_select -->
+            
+            <div id='ftclogo' class='LS' tag='M1000'></div>
+            <img id='logoicon' src='ftc-images/waveicon2.png'/>
+            <div id='username'>admin</div>
+            <div id='accounsettings'></div>
+            
+            <!-- login button -->
+            <span id="button1">
+                <!-- ko view model data bind: (en)=='log in' -->
+                <div id='loginbutton' class='LS' tag='M1001'></div>
+            </span>
+            <!-- account settings button: shows up after login -->
+            <span id="button2"></span>
+            <!-- user name: shows up after login -->
+            <div id='username'></div>
+        </div><!-- end of div#ftc-titlebar -->
+        
+        <!-- the ftc-body -->
+        <div id='body_container'>
+            <div id="tabs" class='family_pane'>
+                <ul>
+                    <li><a href="#tab1"><span class='LS' tag='M3001'></span></a></li>
+                    <li><a href="#tab2"><span class='LS' tag='M4001'></span></a></li>
+                    <li><a href="#tab3"><span class='LS' tag='M5001'></span></a></li>
+                </ul>
+                <div id="tab1" class="canvasContainer">
+                    <canvas id="ftcanvas"></canvas>
+                </div>
+                <div id="tab2">Contents of the second tab</div>
+                <div id="tab3">Contents of the third tab</div>
+            </div><!-- <div id='family_pane'> -->
+            <div id='person_pane'>
+                <div id='synop'>
+                    <div id='pictureframe'>
+                      <img id='portrait' src='ftc-images/portrait.jpg' />
+                    </div>
+                    <div id='synopbox'>
+                        <ul>
+                            <li>Peter the great</li> 
+                            <li>1672.8 - 1725.2</li>
+                            <li>Born in Petersbug</li>
+                            <li>Big killer</li>
+                        </ul>
+                    </div>
+                </div><!-- id='synop' -->
+                <div id='cat_selectbar'>
+                    <span id='button3'></span>
+                    <select id='infoCatSelect'></select>
+                    <span id='button4'></span>
+                </div><!-- id='cat_selectbar' -->
+                <div id='infos'>
+                    <ul id='info-list1'>
+                        <li>list item 1</li>
+                    </ul>
+                </div><!-- id='infos' -->
+                <div id='personpane_bottombar'>
+                    <span id='button5'></span>    
+                    <span id='button100'></span>    
+                </div>
+            </div><!-- id='person_pane' -->
+        </div><!-- id='body_container' -->
+  </body>
+</html>

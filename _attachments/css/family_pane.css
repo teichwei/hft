@@ -1,0 +1,58 @@
+/* -----------------------------------------------------------------------------
+ * frame body is layed out with css table, with 1 row and 2 cols:
+ * col1: graphs-pane (also serves as tabs container)
+ * col2: info-pane
+ * ----------------*/
+
+li.ui-state-default {
+    font-size : 12px;
+}
+
+div.ui-tabs-panel {
+    overflow: auto;
+    font-size : 15px;
+    font-family : georgia;
+    font-style : italic;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.canvasContainer {
+    border-color: #007d7d;
+    border-style: solid;
+    border-width: thin;
+    max-width: 706px;
+    max-height: 670px;
+    overflow: auto;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#ftcanvas {
+    width: 840px;
+    height: 910px;
+    //background-image: url(../ftc-images/bg2.jpg);
+    background-image: url(../ftc-images/ftc0.jpg);
+    background-origin: padding-box;
+    background-size: 140%;
+    position: relative;
+    top: -15px;
+    left: -20px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * family-pane
+ * */
+div.family_pane {
+    padding: 0px;
+    width: 750px;
+    height: 738px;  /* IE does not let use percentage for width/height */
+    background-color: blue;
+}
+
+#tabs.ui-tabs-nav {
+	background-color: black;
+	padding-left: 100px;
+}
