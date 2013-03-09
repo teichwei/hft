@@ -1,0 +1,12 @@
+thi sis aomf eajfei j
+feajlkfj 
+funciton
+feaf
+afeajkflejalfjj
+
+function hello {
+	print hello;
+	print goodbye;
+
+	if ( blue == red ){
+	}}
