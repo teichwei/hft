@@ -205,7 +205,7 @@ A1.include({
         this._psswrd = d['psswrd'] || 'password';   // login password
         this.psswrd = function(v){
             if(v){ this._psswrd = v; return; }
-            else { return this._psswrd; }
+            return this._psswrd;
         };
         // ucode contains info about user's roll, ranking -TBD
         this._ucode = d['ucode'] || 'usr' // sadmin, fadmin

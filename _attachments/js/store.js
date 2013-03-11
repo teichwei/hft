@@ -40,7 +40,7 @@ var Store = function(){
             this.entdict[e.cid()] = {};
         }
         
-        // entities of this cid are the ones with highst vid
+        // getEntity(eid) gets highst vid
         this.entdict[e.cid()][eid] = this.getEntity(eid);
         return this;    // return this/store for chaining
         
@@ -66,7 +66,7 @@ var Store = function(){
                     if (this.epool[eid][i].vid() == vid)
                         return this.epool[eid][i];
                 }
-            }else{  //
+            }else{//
                 return this.epool[eid][0];
             }
         }

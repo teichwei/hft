@@ -86,16 +86,16 @@ var add_ib_acc_select_options = function(){
     $('#ib_acc_select').find('option').remove();
     
     $('#ib_acc_select').append($('<option>', {
-        value: "M0063", // Me only
-        text: ldict['M0063'][FD.lcode]
+        value: "M7502", // Me only
+        text: ldict['M7502'][FD.lcode]
     }));
     $('#ib_acc_select').append($('<option>', {
-        value: "M0062", // Some members(s) of family
-        text: ldict['M0062'][FD.lcode]
+        value: "M7506", // Some members(s) of family
+        text: ldict['M7506'][FD.lcode]
     }));
     $('#ib_acc_select').append($('<option>', {
-        value: "M0061", // All family member
-        text: ldict['M0061'][FD.lcode]
+        value: "M7500", // All family member
+        text: ldict['M7500'][FD.lcode]
     }));
 }
 
@@ -141,7 +141,7 @@ var init_personpane = function(){
             
             var dlg = $('#Dlg_newib').dialog({
                 autoOpen: false,
-                title: ldict['M0066'][FD.lcode],
+                title: ldict['M7505'][FD.lcode],
                 modal: true,
                 width: 680,
                 height: 290,
@@ -149,11 +149,11 @@ var init_personpane = function(){
                 hide: true,
                 buttons: {
                     'ok-button':{
-                        text: ldict['M0007'][FD.lcode],
+                        text: ldict['M0002'][FD.lcode],
                         click: Dlg_newib_execute
                     },
                     'cancel-button':{
-                        text: ldict['M0009'][FD.lcode],
+                        text: ldict['M0003'][FD.lcode],
                         click: Dlg_newib_cancel
                     }
                 }
