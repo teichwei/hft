@@ -1,0 +1,13 @@
+thi sis aomf eajfei j
+feajlkfj 
+funciton
+feaf
+afeajkflejalfjj
+
+function hello {
+	print goodbye;
+	if ( purple == red ){
+	}}
+	print hello;
+
+	
