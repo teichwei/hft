@@ -118,8 +118,8 @@
     {   "_id": "3TXE45N-BA-000001",
         "tx": "0",
         "type": "detached",
-        "uday": "189nnnnn",
-        "dday": "189nnnnn",
+        "uday": "18850101",
+        "dday": "19191005",
         "synop": u"Mao's parent couple"
     },
     {   "_id": "3TXE45N-RL-000001",
@@ -138,9 +138,9 @@
     },
     {   "_id": "3TXE45N-BA-000002",
         "tx": "0",
-        "type": "dettached",
-        "uday": "189nnnnn",
-        "dday": "189nnnnn",
+        "type": "detached",
+        "uday": "19381120",
+        "dday": "19760909",
         "synop": u"b2:mzd - JQ"
     },
     # 2 spouse-RL for ba2
@@ -160,9 +160,9 @@
     },
     {   "_id": "3TXE45N-BA-000003",
         "tx": "0",
-        "type": "dettached",
-        "uday": "189nnnnn",
-        "dday": "189nnnnn",
+        "type": "detached",
+        "uday": "19280501",
+        "dday": "19381120",
         "synop": u"coupled with HZZ"
     },
     # 2 spouse-RL for ba3
@@ -182,9 +182,9 @@
     },
     {   "_id": "3TXE45N-BA-000004",
         "tx": "0",
-        "type": "dettached",
-        "uday": "189nnnnn",
-        "dday": "189nnnnn",
+        "type": "detached",
+        "uday": "19201212",
+        "dday": "19301014",
         "synop": u"bond4: mzd-YKH"
     },
     # 2 spouse-RL for ba4
@@ -204,9 +204,9 @@
     },
     {   "_id": "3TXE45N-BA-000005",
         "tx": "0",
-        "type": "dettached",
-        "uday": "189nnnnn",
-        "dday": "189nnnnn",
+        "type": "detached",
+        "uday": "19071217",
+        "dday": "19101010",
         "synop": u"coupled:mzd-LYX"
     },
     # 2 spouse-RL for ba5
@@ -511,7 +511,7 @@
     },
     {   "_id": "3TXE45N-BA-000007",
         "tx": "0",
-        "type": "dettached",
+        "type": "detached",
         "uday": "189nnnnn",
         "dday": "189nnnnn",
         "synop": u"coupled: 毛泽民-钱希钧"
@@ -542,7 +542,7 @@
     },
     {  "_id": "3TXE45N-BA-000008",
         "tx": "0",
-        "type": "dettached",
+        "type": "detached",
         "uday": "189nnnnn",
         "dday": "189nnnnn",
         "synop": u"coupled: 毛泽民-朱旦华"
@@ -573,7 +573,7 @@
     },
     {  "_id": "3TXE45N-BA-000009",
         "tx": "0",
-        "type": "dettached",
+        "type": "detached",
         "uday": "189nnnnn",
         "dday": "189nnnnn",
         "synop": u"coupled: mzt-hy"
@@ -604,7 +604,7 @@
     },
     {  "_id": "3TXE45N-BA-000010",
         "tx": "0",
-        "type": "dettached",
+        "type": "detached",
         "uday": "189nnnnn",
         "dday": "189nnnnn",
         "synop": u"coupled: 毛泽覃-周文楠"
@@ -635,7 +635,7 @@
     },
     {  "_id": "3TXE45N-BA-000011",
         "tx": "0",
-        "type": "dettached",
+        "type": "detached",
         "uday": "189nnnnn",
         "dday": "189nnnnn",
         "synop": u"coupled: hy-lsq"

@@ -46,9 +46,14 @@ var Class = function(){
     // this will be overridden, if not, this is the default
     klass.prototype.init = function(d){
         // _id looks like: 3TXE45N-RS-FbXyKC1364194589525_1
-        var _id = d['_id'] || create_id(); 
-        // get 1364194589525 part
-        this.crtime = function(){ return _id.substr(17,13); };
+        var _id = d['_id'] || create_id();
+        
+        // get 1364194589525 part, parse/return a javascript Date inst
+        this.crtime = function(){ 
+            var da = new Date();
+            da.setTime(Number(_id.substr(17,13));
+            return da;
+        };
         var _tx = d['tx'] || "";
         this.tx = function(t){    
             if(t){ _tx = t; return this; }
@@ -398,7 +403,7 @@ RS.include({
 var BA = new Class();
 BA.include({
     initialize: function(d){
-        var _type = d['type'] || 'married'; // married|partner|departed
+        var _type = d['type'] || 'married'; // married|partner|detached
         this.type = function(v){
             if(v) { _type = v; return this; }
             else { return _type; }
