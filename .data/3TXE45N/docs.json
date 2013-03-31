@@ -1,0 +1,659 @@
+
+# ------------------------------------------------------------------------------
+# created 2013-03-20 Jianchi Wei
+#--------------------------------
+# file name extension is now json. But it is actually read by python script
+# and parsed as python lst. I use json extension for file-ext encoding
+# so that it is utf-8 encoded
+# ------------------------------------------------------------------------------
+# Mao's family
+
+# ---------------------------------------------------------------------------
+# What _id is made of:
+# <fid(7)>-<cid(2)>-<count(6)><ts(13)>  sum up length: 30
+# if cid is entity class (not RL, TX, SE, RS), _<vid> to be added: 
+# _<vid number>. we expect vid to be 0-filled 2 digits, 30 + 3 = 33
+# When maually created, we only put <fid(7)>-<cid(2)>-<count(6)>: 17 chars
+# count <- 6 random chars; ts(to be generated)is milisecs since epoc.
+# ---------------------------------------------------------------------------
+# field values that have non-ACSII in them, should be marked with u".."
+
+[   { 
+        "_id": "3TXE45N-FA-000001",
+        "tx": "0",
+        "lastupdate":"1363854458654000",
+        "name": u"mao family",
+        "type": "zh-promo"
+    },
+    {   "_id": "3TXE45N-PA-000001",
+        "tx": "0",
+        # ----------------------------------------------------------------------
+        # tagname has 3 formas: 1.no space/,;2. space delimiter; 3. , delimiter.
+        # case: 1 line in pv, case 2 and 3: if length fits, one line; if not
+        # use 2 lines. To do pv must be flexible and intelligent judging this.
+        # --------------------------------------------------------------------
+        "tagname": u"毛泽东",  
+        "portrait": "3TXE45N-RS-P00019",
+        "sex": "male",
+        "dob": "18931226",
+        "dod": "19760909",
+        "synop": u"mao zedong",
+        # ----------------------------------------------------------------------
+        # credential is optional. Only for login user. Pointing to a FC inst.
+        # --------------
+        "ftc_credential": "3TXE45N-FC-070101"
+    },
+    {   "_id": "3TXE45N-PA-000002",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"毛贻昌",  
+        "portrait": "3TXE45N-RS-P00032",
+        "dob": "18701015",
+        "dod": "19200123",
+        "synop": u"毛贻昌/毛顺生 - mao zedong father"
+    },
+    {   "_id": "3TXE45N-PA-000003",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"文素勤",  
+        "portrait": "3TXE45N-RS-P00031",
+        "dob": "18670212",
+        "dod": "19191005",
+        "synop": u"文七妹 - mao zedong mother"
+    },
+    {   "_id": "3TXE45N-PA-000004",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"江青",  
+        "portrait": "3TXE45N-RS-P00012",
+        "dob": "19140319",
+        "dod": "19910514",
+        "synop": u"JQ - Mao zedong wife4"
+    },
+    {   "_id": "3TXE45N-PA-000005",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"贺子珍",  
+        "portrait": "3TXE45N-RS-P00002",
+        "dob": "19090901",
+        "dod": "19840419",
+        "synop": u"He Zizhen - Mao zedong wife3"
+    },
+    {   "_id": "3TXE45N-PA-000006",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"杨开慧",  
+        "portrait": "3TXE45N-RS-P00028",
+        "dob": "19011106",
+        "dod": "19301114",
+        "synop": u"Yang KH - Mao zedong wife2"
+    },
+    {   "_id": "3TXE45N-PA-000007",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"罗一秀",  
+        "portrait": "3TXE45N-RS-P00052",  # icon - no pic available
+        "dob": "18891020",
+        "dod": "19100211",
+        "synop": u"Luo yixiu- Mao zedong wife1"
+    },
+    {   "_id": "3TXE45N-PA-000008",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"毛岸英",  
+        "portrait": "3TXE45N-RS-P00054",
+        "dob": "19221024",
+        "dod": "19501125",
+        "synop": u"毛泽东/杨开慧 eldest son"
+    },
+    {   "_id": "3TXE45N-PA-000009",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"李讷", 
+        "portrait": "3TXE45N-RS-P00055 ",
+        "dob": "19400802",
+        "dod": "",
+        "synop": u"毛泽东/江青 daughter"
+    },
+    {   "_id": "3TXE45N-BA-000001",
+        "tx": "0",
+        "type": "detached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"Mao's parent couple"
+    },
+    {   "_id": "3TXE45N-RL-000001",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000001",
+        "reid": "3TXE45N-PA-000002",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-RL-000002",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000001",
+        "reid": "3TXE45N-PA-000003",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-BA-000002",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"b2:mzd - JQ"
+    },
+    # 2 spouse-RL for ba2
+    {   "_id": "3TXE45N-RL-000003",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000002",
+        "reid": "3TXE45N-PA-000001",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-RL-000004",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000002",
+        "reid": "3TXE45N-PA-000004",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-BA-000003",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled with HZZ"
+    },
+    # 2 spouse-RL for ba3
+    {   "_id": "3TXE45N-RL-000005",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000003",
+        "reid": "3TXE45N-PA-000001",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-RL-000006",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000003",
+        "reid": "3TXE45N-PA-000005",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-BA-000004",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"bond4: mzd-YKH"
+    },
+    # 2 spouse-RL for ba4
+    {   "_id": "3TXE45N-RL-000007",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000004",
+        "reid": "3TXE45N-PA-000001",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000008",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000004",
+        "reid": "3TXE45N-PA-000006",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {   "_id": "3TXE45N-BA-000005",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled:mzd-LYX"
+    },
+    # 2 spouse-RL for ba5
+    {  "_id": "3TXE45N-RL-000009",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000005",
+        "reid": "3TXE45N-PA-000001",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000010",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000005",
+        "reid": "3TXE45N-PA-000007",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000011",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000001",
+        "reid": "3TXE45N-PA-000001",
+        "lcont": ['children'],
+        "rcont":['parents'],
+    },
+    {  "_id": "3TXE45N-RL-000012",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000004",
+        "reid": "3TXE45N-PA-000008",
+        "lcont": ['children'],
+        "rcont":['parents'],
+    },
+    {  "_id": "3TXE45N-RL-000013",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000002",
+        "reid": "3TXE45N-PA-000009",
+        "lcont": ['children'],
+        "rcont":['parents'],
+    },
+    # --------------------mzd's ips---------------------------------------------
+    # mzd's info pane 1: life chronicle
+    {  "_id": "3TXE45N-IP-000001",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7001", # localized string: life chronicle
+        "title": u"生平",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 2: photo albums
+    {  "_id": "3TXE45N-IP-000002",
+    
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7002", # localized string: photo albums
+        "title": u"albums",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 3: places to remember
+    {  "_id": "3TXE45N-IP-000003",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7003", # localized string: Places tp remember
+        "title": u"记忆中的地方",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 4: poetry
+    {  "_id": "3TXE45N-IP-000004",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7016", # localized string: poetry
+        "title": u"诗集",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 5: goals and plans
+    {  "_id": "3TXE45N-IP-000005",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7013", # localized string: goals and plans
+        "title": u"计划与目标",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 6: names and titles
+    {  "_id": "3TXE45N-IP-000006",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7015", # localized string: names and titles
+        "title": u"名字与头衔",    # tootltip pop up
+        "conf": {}        
+    },
+    # mzd's info pane 7: accounts
+    {  "_id": "3TXE45N-IP-000007",
+        "tx": "0",
+        "owner": "3TXE45N-PA-000001",
+        "name":"M7014", # localized string: names and titles
+        "title": u"我的账户",    # tootltip pop up
+        "conf": {}        
+    },
+    # items under ip1/life chronicle 
+    # ---------------------------------
+    {   "_id": "3TXE45N-IT-010001",
+        "owner": "3TXE45N-IP-000001",
+        "title": u"1893: Birth",
+        "synop": u"the son of a wealthy farmer in Shaoshan, Hunan"        
+    },
+    {   "_id": "3TXE45N-IT-010002",
+        "owner": "3TXE45N-IP-000001",
+        "title": u"1906: School ",
+        "synop": u"Village school when 13"
+    },
+    {   "_id": "3TXE45N-IT-010003",
+        "owner": "3TXE45N-IP-000001",
+        "title": u"1907: Arranged marriage",
+        "synop": u"he never accepted it"
+    },
+    {   "_id": "3TXE45N-IT-010004",
+        "owner": "3TXE45N-IP-000001",
+        "title": u"1910: secondary school",
+        "synop": u"at age of 17, left home for Changsha"
+    },
+    {   "_id": "3TXE45N-IT-010005",
+        "owner": "3TXE45N-IP-000001",
+        "title": u"1912: joined army",
+        "synop": u"18"
+    },
+    # ip2/photo album items
+    # -----------------------
+    {   "_id": "3TXE45N-IT-020001",
+        "owner": "3TXE45N-IP-000002",
+        "title": u"The fighting years army",
+        "synop": u"most BW"
+    },
+    {   "_id": "3TXE45N-IT-020002",
+        "owner": "3TXE45N-IP-000002",
+        "title": u"As chairman of China",
+        "synop": u"Like a God"
+    },
+    {   "_id": "3TXE45N-IT-020003",
+        "owner": "3TXE45N-IP-000002",
+        "title": u"Private",
+        "synop": u"With wives/children"
+    },
+    
+    # ip3 places items
+    # -----------------
+    {   "_id": "3TXE45N-IT-030001",
+        "owner": "3TXE45N-IP-000003",
+        "title": u"Birth place",
+        "synop": u"Shaoshan chong"
+    },
+    {   "_id": "3TXE45N-IT-030002",
+        "owner": "3TXE45N-IP-000003",
+        "title": u"underways",
+        "synop": u"Shaoshan chong"
+    },
+    {   "_id": "3TXE45N-IT-030004",
+        "owner": "3TXE45N-IP-000003",
+        "title": u"lushan",
+        "synop": u"important place for that meeting"
+    },
+    
+    # ip4 writings items
+    # -------------------
+    {   "_id": "3TXE45N-IT-040001",
+        "owner": "3TXE45N-IP-000004",
+        "title": u"Poetry",
+        "synop": u"Big poet"
+    },
+    {   "_id": "3TXE45N-IT-040002",
+        "owner": "3TXE45N-IP-000004",
+        "title": u"Articles",
+        "synop": u"..."
+    },
+    {   "_id": "3TXE45N-IT-040003",
+        "owner": "3TXE45N-IP-000004",
+        "title": u"Correspondence",
+        "synop": u".."
+    },
+    {   "_id": "3TXE45N-IT-040004",
+        "owner": "3TXE45N-IP-000004",
+        "title": u"books",
+        "synop": u".."
+    },
+    
+    # ip5 plan/goals items
+    # --------------------
+    {   "_id": "3TXE45N-IT-050001",
+        "owner": "3TXE45N-IP-000005",
+        "title": u"Rule China",
+        "synop": u".."
+    },
+    {   "_id": "3TXE45N-IT-050002",
+        "owner": "3TXE45N-IP-000005",
+        "title": u"The world stage",
+        "synop": u".."
+    },
+    {   "_id": "3TXE45N-IT-050003",
+        "owner": "3TXE45N-IP-000005",
+        "title": u"Internal struggles",
+        "synop": u".."
+    },
+    
+    # items under ip6 names/titles
+    # -----------------------------
+    {   "_id": "3TXE45N-IT-060001",
+        "owner": "3TXE45N-IP-000006",
+        "title": u"名字： 毛泽东",
+        "synop": u"known to most"        
+    },
+    
+    # items under ip7 accounts
+    # -----------------------------
+    {   "_id": "3TXE45N-IT-070001",
+        "owner": "3TXE45N-IP-000007",
+        "title": u"FTC-login",
+        "synop": u"login into FTC for manioulating"
+    },
+    # facets under ip7-it0701
+    # -----------------------------
+    {   "_id": "3TXE45N-FC-070101",
+        "owner": "3TXE45N-IT-070001",
+        "title": u"FTC-login",
+        "anno": u"login into FTC for manioulating",
+        # ----------------------------------------------------------------------
+        # master is optional. Only ftc-login (purpose) FC has it. Ref to PA.
+        # --------
+        "user": "3TXE45N-PA-000001",
+        "contdict": {
+            'purpose':'ftc-login','usrname':u'admin', 'password':u'password'}
+    },
+    
+    #-------------------mzd's siblings-----------
+    {   "_id": "3TXE45N-PA-000010",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"毛泽民",  
+        "portrait": "3TXE45N-RS-P00035",
+        "dob": "18960403",
+        "dod": "19430927",
+        "synop": u"毛泽民"
+    },
+    {  "_id": "3TXE45N-RL-000014",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000001",
+        "reid": "3TXE45N-PA-000010",
+        "lcont": ['children'],
+        "rcont":['parents'],
+    },
+    {   "_id": "3TXE45N-PA-000011",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"毛泽覃",  
+        "portrait": "3TXE45N-RS-P00043",
+        "dob": "19050925",
+        "dod": "19350425",
+        "synop": u"毛泽覃"
+    },
+    {  "_id": "3TXE45N-RL-000015",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000001",
+        "reid": "3TXE45N-PA-000011",
+        "lcont": ['children'],
+        "rcont":['parents'],
+    },
+    {   "_id": "3TXE45N-PA-000012",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"王淑兰",  
+        "portrait": "3TXE45N-RS-P00056",
+        "dob": "18960000",
+        "dod": "19640000",
+        "synop": u"王淑兰,毛泽民第一任妻子, 生三子二女"
+    },
+    {   "_id": "3TXE45N-BA-000006",
+        "tx": "0",
+        "type": "detached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"couple 毛泽民-王淑兰"
+    },
+    # 2 spouse-RL for ba6
+    {  "_id": "3TXE45N-RL-000016",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000006",
+        "reid": "3TXE45N-PA-000010",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000017",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000006",
+        "reid": "3TXE45N-PA-000012",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-PA-000013",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"钱希钧",  
+        "portrait": "3TXE45N-RS-P00057",
+        "dob": "19050000",
+        "dod": "1989",
+        "synop": u"钱希钧,毛泽民第二任夫人, 未曾生育"
+    },
+    {   "_id": "3TXE45N-BA-000007",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled: 毛泽民-钱希钧"
+    },
+    # 2 spouse-RL for ba7
+    {  "_id": "3TXE45N-RL-000018",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000007",
+        "reid": "3TXE45N-PA-000010",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000019",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000007",
+        "reid": "3TXE45N-PA-000013",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-PA-000014",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"朱旦华",  
+        "portrait": "3TXE45N-RS-P00060",
+        "dob": "18960403",
+        "dod": "19430927",
+        "synop": u"毛泽民第三任夫人, 生子毛远新,1949年改嫁方志敏的弟弟方志纯"
+    },
+    {  "_id": "3TXE45N-BA-000008",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled: 毛泽民-朱旦华"
+    },
+    # 2 spouse-RL for ba8
+    {  "_id": "3TXE45N-RL-000020",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000008",
+        "reid": "3TXE45N-PA-000010",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000021",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000008",
+        "reid": "3TXE45N-PA-000014",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-PA-000015",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"贺怡",  
+        "portrait": "3TXE45N-RS-P00042",
+        "dob": "19111200",
+        "dod": "194911nn",
+        "synop": u"毛泽覃 wife,1931年7月20日marriage.died of traffic accident"
+    },
+    {  "_id": "3TXE45N-BA-000009",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled: mzt-hy"
+    },
+    # 2 spouse-RL for ba9
+    {  "_id": "3TXE45N-RL-000022",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000009",
+        "reid": "3TXE45N-PA-000011",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000023",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000009",
+        "reid": "3TXE45N-PA-000015",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-PA-000016",
+        "tx": "0",
+        "sex": "female",
+        "tagname": u"周文楠",  
+        "portrait": "3TXE45N-RS-P00061",
+        "dob": "19101011",
+        "dod": "199209",
+        "synop": u"毛泽覃 1st wife, married 1926,生下了毛楚雄.逝于哈尔滨"
+    },
+    {  "_id": "3TXE45N-BA-000010",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled: 毛泽覃-周文楠"
+    },
+    # 2 spouse-RL for ba10
+    {  "_id": "3TXE45N-RL-000024",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000010",
+        "reid": "3TXE45N-PA-000011",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000025",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000010",
+        "reid": "3TXE45N-PA-000016",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-PA-000017",
+        "tx": "0",
+        "sex": "male",
+        "tagname": u"刘士奇",  
+        "portrait": "3TXE45N-RS-P00051",
+        "dob": "19020000",
+        "dod": "19330000",
+        "synop": u"贺怡 1st husband, 1929年4月 married"
+    },
+    {  "_id": "3TXE45N-BA-000011",
+        "tx": "0",
+        "type": "dettached",
+        "uday": "189nnnnn",
+        "dday": "189nnnnn",
+        "synop": u"coupled: hy-lsq"
+    },
+    # 2 spouse-RL for ba11
+    {  "_id": "3TXE45N-RL-000026",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000011",
+        "reid": "3TXE45N-PA-000017",
+        "lcont": ['man'],
+        "rcont":['spouses'],
+    },
+    {  "_id": "3TXE45N-RL-000027",
+        "tx": "0",
+        "leid": "3TXE45N-BA-000011",
+        "reid": "3TXE45N-PA-000015",
+        "lcont": ['woman'],
+        "rcont":['spouses'],
+    },
+
+]

@@ -638,6 +638,28 @@
         ko: 'FTC in ko',
         th: 'FTC in th'
     },
+    M7016:{
+        descr: 'titles and names',
+        en: 'poetry',
+        zh: '诗集',
+        de: 'Gedicht',
+        fr: 'poetry in fr',
+        it: 'poetry in it',
+        sv: 'poetry in sv',
+        es: 'poetry in es',
+        cs: 'poetry in cs',
+        da: 'poetry in da',
+        nl: 'poetry in nl',
+        fi: 'poetry in fi',
+        hu: 'poetry in hu',
+        ja: 'poetry in ja',
+        no: 'poetry in no',
+        pl: 'poetry in pl',
+        pt: 'poetry in pt',
+        ru: 'poetry in ru',
+        ko: 'poetry in ko',
+        th: 'poetry in th'
+    },
     M7500:{
         descr: 'choice(sel-option) for access control',
         en: 'All family member',

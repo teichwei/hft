@@ -9,14 +9,8 @@ import random, os
 from datetime import datetime
 
 import platform
-if platform.python_version().startswith('3'):
-    from configparser import ConfigParser
-else:
-    from ConfigParser import ConfigParser 
     
-conf = ConfigParser()
-conf.read('system.config')
-promocodes_file = conf.get('system-options','promocodes-file')    
+promocodes_file = 'promocodes.py'
 
 # -----------------------------------------------------------------------------
 # 7 digits of 33 possible chars gives over 42 billion codes

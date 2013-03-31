@@ -1,5 +1,5 @@
 function(doc) {
-    if(doc.fid){
-        emit(doc.fid, doc);
+    if(doc._id){
+        emit(doc._id, doc);
     }
 }

@@ -76,7 +76,7 @@ var init_titlebar = function(){
         var password = $('#login_password').val();
         
         /* handle login-response: FD.loggedin set true/false by this */
-        authenticate('G8FVL9L',userid, password);
+        authenticate('3TXE45N',userid, password);
 
         if (FD.loggedin){
             show_loggedin();

@@ -1,5 +1,6 @@
 ﻿// 2012-12-09 Waterloo
 // -----------------------------------
+// store holds all data model instances
 // this is to be after basics.js
 
 // an entry in epool is a vid-sorted list of all entities with the
@@ -89,20 +90,16 @@ var Store = function(){
     this.load = function(data){
         for (var i in data.rows){
             var obj = data.rows[i].value;
-            switch(obj.cid){
+            switch(obj._id.substr(8,2)){
         case "RL": this.addRL(new Relation(obj));break; // connect/edge
-        case "F1": this.addEntity(new F1(obj));  break; // family
-        case "P1": this.addEntity(new P1(obj));  break; // person
-        case "A1": this.addEntity(new A1(obj));  break; // login account
-        case "T1": this.addEntity(new T1(obj));  break; // title
-        case "E1": this.addEntity(new E1(obj));  break; // email
-        case "B1": this.addEntity(new B1(obj));  break; // spousal bond
+        case "FA": this.addEntity(new FA(obj));  break; // family
+        case "PA": this.addEntity(new PA(obj));  break; // person
+        case "BA": this.addEntity(new BA(obj));  break; // spousal bond
         case "BC": this.addEntity(new BC(obj));  break; // bond config
         case "RS": this.addEntity(new RS(obj));  break; // resource
-        case "CE": this.addEntity(new CE(obj));  break; // chron-event
-        case "TH": this.addEntity(new TH(obj));  break; // theme
+        case "IT": this.addEntity(new IT(obj));  break; // theme
         case "IP": this.addEntity(new IP(obj));  break; // info-pane
-        case "A2": this.addEntity(new A2(obj));  break; // bank acct
+        case "FC": this.addEntity(new FC(obj));  break; // bank acct
         case "SE": this.addEntity(new SE(obj));  break; // session
         default: console.log("unknown obj: "+JSON.stringify(obj));
             }// switch
@@ -113,10 +110,11 @@ var Store = function(){
         FD.username = '';
         for (var i in data.rows){
             var obj = data.rows[i].value;
-            if (obj.cid == 'A1'){
-                if (obj.fid == fid &&
-                    obj.usrname == usrname &&
-                    obj.psswrd == psswrd){
+            if (obj._id.substr(0,7) == fid && obj._id.substr(8,2) == 'FC'){
+                if (obj.contdict && 
+                    obj.contdict['purpose'] == 'ftc-login' &&
+                    obj.contdict['usrname'] == usrname &&
+                    obj.contdict['password'] == psswrd){
                     // hit!
                     FD.loggedin = true;
                     FD.username = usrname;

@@ -471,3 +471,105 @@ CE  #24 ce1eid  #25  p1eid-ce1eid  chrons
 2013-03-07 0.1.4c
 Updated basics.js to reflect the now 25 insts
 
+-----
+2013-03-20
+making db download/upload scripts. Want to be able to backup/put in use of any
+family DB
+New conclusions:
+1. RLs for F1 -> RS, F1->P1 are not needed
+2.  all RS (resource) files are named unified way:
+    (mime are in mime_map in fillrsdocs.py)
+    Pnnnnn.(jpg|gif|png..)      all pictures
+    Annnnn.(mp3|wav|..)         all audio files
+    Tnnnnn.(rtf|pdf|doc|txt..)  all text files
+    Vnnnnn.(avi|mov|...)        all video files
+    
+---------
+2013-03-23
+data-modeling changes.
+- changed class names to use 2 cap letters - no number in it
+  F1->FA, P1->PA, B1->BA
+- unify all items for any ip. eliminate CE, A1, A2
+  IT (item class):
+  { title: <list entry test in ip>,date:<norminal date of item>,synop:"tooltip"}
+  item will contain facets:[]
+  FC (facet class)
+  { title: <facet-list entry text in item popup dlg>,
+    gcolor: (w|b|p|g|s), for grp-sorting user may want to
+    anno:"blah",
+    rslst:[(<rs-name>,<title>),..] where title is naming the rs in rs pane
+    contdict:{<any key name>:<value>,...}
+  }
+  the contdict should cover all cases: in case of "names & titles", it would
+  contain {firstname:,lastname:,middlename, type:} where type can be legal,
+  ftc-login, nick-name; in case of type==ftc-login, username, password will
+  be present, also (userrool, ranking, redit..)
+  in case of email accoutn, contdict would have address, username,password,
+  service-provider, url,..; in case of chronical event, contdict would have
+  event-date,...
+  I will have to parse/present these info with specific parser to display these
+  in the pop up layout. As for now, I keep that open/flexible.
+
+DB/file structure
+  all resource files are fa-inst attachments. the file name has the format of
+  Pnnnnn.(gif|jpg|png|bmp) for pictures files
+  Tnnnnn.(doc|rtf|txt|pdf) for text files
+  Annnnn.(mp3|wav|...) for audio files
+  Vnnnnn.(avi|..) for video files
+  these names are unique under the fid. facets (or other docs) refer to a rs
+  withthis format name.
+  in RS class, the python tool will generate md5 signature/size for each file.
+  these should make the rs item identifiable, in case use tries to upload an
+  duplicate rs file. the name/title of the rs-inst is defined in the docs that 
+  refer to the rs. In this way an user can name the same rs file with different
+  name/title.
+  All rs files can not be edited by user. Only upload/delete.
+  
+_id generator now uses just 6 random chars+'T'+ 13 digits of milisecs since epoc
+this results in 20 (6+T+13) digits for _id. should be ok.
+The advantage of using my format is: it contains crtime in it - accurate to the
+milisec. So far I have seen the behaviour of random call to generate char-sets:
+it is pretty radom. So within 1 miliseconds, that the two generated 6 chars 
+being the same, is to tiny to cause concern. in my PC/tool now, the neighboring
+call of id_gen is about 2 miliscs (the fastest so far). If oneday the PC is too
+fast, that 2 calls are done within 1 milisecond, I would rely on the 6 chars
+of the 2 ids(first 6 chars in id) are different. I don't see issue here now.
+
+-------------
+2013-03-24
+optimized eid/_id
+<fid(7)>-<cid(2)>-<count(6)><ts>
+7+'-'+2+'-'+6 = 17
+when running python tool formatdocs.py, count will be replaced with radomly
+generate 6 chars(from A-z), then 13 digits of miliscs since epoc will be
+appended at the end, adding 13 : 17+13->30.
+If obj is of entity class (not RL, TX, SE), '_<vid>' will be added. vid is 
+maxly 2 digits: 30+'_99' -> 33 chars long. So, _id will be 32/33 long for 
+entity insts, and 30 long for non-entities. eid is _id without '_<vid>': 30 long
+With this _id in place, no fid, cid are needed. This makes things more simple.
+
+# file name: formatdata.py
+# last modified: 2013-03-24 Jianchi Wei
+# ----------------------
+# generated a file '.data/<fid>/docs.buf, that can be read: open('','rb').read()
+# (binary because of unicode). Sources:
+# - '.data/<fid>/docs.json' - replace <count> with 6 random chars, and 13 digits
+#   time-stamp(milisecs since epoch). If it is entity inst, a _<vid> appended.
+#   objects of RL class will be treated at the end, to ensure the leid/reid be
+#   updated to the newly generated _ids of all entity insts.
+#   a formatdata.log will be generated to record to map of old _ids and the new.
+# - '.data/<fid>/rs.json'
+#   when appending docs from rs.json to docs.buf, docs will be updated for
+#   1. file-size of the media file, and 
+#   2. the digital-signature of the file(md5).
+#   if the doc already has value(s) for 'size' / 'signature', they will be
+#   over-written. _id will be generated the same way as above. Others unchanged.
+# ------------------------
+# next step: python pushdb.py <fid>
+# this will read '.data/<fid>/docs.buf' and upload every doc to the given db.
+# it will then attach data from all media files under .data/<fid>/attachments
+# to the FA doc. the mime-type of each file comes from mimemap.py
+# --------------
+# notice: the 13 digits ts reflect the time point when formatdata.py is run.
+# when seeing the records in DB, this ts is not the time of uploading.
+# ------------------------------------------------------------------------------
