@@ -21,13 +21,17 @@ var vid_reversesort = function(e1, e2){
 
 // store is the model repository on client side
 var Store = function(){
-    this.epool = {};    // eid-keyed entity-list, vid (reverse)sorted
+    // eid-keyed entity-list, each list contains diff versions of
+    // the same entity. vid (reverse)sorted: highst vid front: [0]
+    this.epool = {};    
     this.rpool = {};
     
     // {<cid1>:{<eid>:<ent>, <eid>:<ent>, ..}, <cid2>:{}, ...}
+    // each ent is the highst vid
     this.entdict = {};  
     this.txs = new Array();
     
+    // add entity into epool and entdict
     this.addEntity = function(e){
         var eid = e.eid();
         if (!(eid in this.epool)){
@@ -47,6 +51,7 @@ var Store = function(){
         
     };
     
+    // get a list(array) of eids of all entities of the same cid
     this.getEidsByCid = function(cid){
         var _keys = Object.keys(this.entdict[cid]);
         return _keys;
@@ -87,6 +92,7 @@ var Store = function(){
         };
         return null;
     };
+    // parse rows of data into epool/rpool
     this.load = function(data){
         for (var i in data.rows){
             var obj = data.rows[i].value;
@@ -122,7 +128,87 @@ var Store = function(){
                 }
             }
         }
-    }
+    };
+    
+    // build all relationships between entities
+    this.build_tree = function(){
+        var pa_eids = this.getEidsByCid('PA');
+        var ip_eids = this.getEidsByCid('IP');
+        var it_eids = this.getEidsByCid('IT');
+        var fc_eids = this.getEidsByCid('FC');
+        
+        // build relationships defined by all RLs: pa<->BA (spousal/children)
+        for (var rlid in this.rpool){
+            var rl = this.getRL(rlid);
+            lent = this.getEntity(rl.leid());   // left: the containing entity
+            rent = this.getEntity(rl.reid());   // right: the contained entity
+            // loop thru all list name lent contains rent with(can be >1 lists)
+            for (var i = 0; i < rl.lcont().length; i++){ 
+                if (!lent[rl.lcont()[i]]){   // if list not existing
+                    lent[rl.lcont()[i]] = [];            // create one
+                }
+                lent[rl.lcont()[i]].push(rent);  // put rent into the list
+            }
+            for (var i = 0; i < rl.rcont().length; i++){
+                if (!rent[rl.rcont()[i]]){
+                    rent[rl.rcont()[i]] = [];
+                }
+                rent[rl.rcont()[i]].push(lent);
+            }
+        }
+        
+        // build relationships not defined by RL: pa-ip-it-fc, and pa-fc
+        // --------------------------------------------------------------
+        // 1. collecting all ips whose owner is pa, under pa.ips[]
+        for (var i = 0; i < pa_eids.length; i++){
+            var pa = this.getEntity(pa_eids[i]);
+            
+            for(var j = 0; j < ip_eids.length; j++){
+                var ip = this.getEntity(ip_eids[j]);
+                if (ip.owner() == pa_eids[i]){
+                    if (!pa['ips'])
+                        pa.ips = [];
+                    pa.ips.push(ip);
+                }
+            }
+        } 
+        // 2. collecting all its whose owner is ip, under ip.items[]
+        for (var i = 0; i < ip_eids.length; i++){
+            var ip = this.getEntity(ip_eids[i]);
+            
+            for(var j = 0; j < it_eids.length; j++){
+                var it = this.getEntity(it_eids[j]);
+                if (it.owner() == ip_eids[i]){
+                    if (!ip['items'])
+                        ip.items = [];
+                    ip.items.push(it);
+                }
+            }
+        } 
+        // 3. collecting all fcs whose owner is it, under it.facets[]
+        //    also, for fc with purpose=='ftc-login', build pa-fc
+        for (var i = 0; i < it_eids.length; i++){
+            var it = this.getEntity(it_eids[i]);
+            
+            for(var j = 0; j < fc_eids.length; j++){
+                var fc = this.getEntity(fc_eids[j]);
+                if (fc.owner() == it_eids[i]){
+                    if (!it['facets'])
+                        it.facets = [];
+                    it.facets.push(fc);
+                }
+                // in case of ftc-login fc, build pa-fc
+                /* 
+                // since pa.credential == fc.eid(), fc.user() == pa.eid()
+                // there is no need to build pa-fc relationship. It exists.
+                if (fc.user()){
+                    var pa = this.getEntity(fc.user());
+                    if (pa.credential = fc.eid()){
+                    fc.user
+                }*/
+            }
+        } 
+    };// this.build_tree = function()
     /* */
 };
 

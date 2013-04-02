@@ -51,7 +51,7 @@ var Class = function(){
         // get 1364194589525 part, parse/return a javascript Date inst
         this.crtime = function(){ 
             var da = new Date();
-            da.setTime(Number(_id.substr(17,13));
+            da.setTime(Number(_id.substr(17,13)));
             return da;
         };
         var _tx = d['tx'] || "";
@@ -193,7 +193,7 @@ PA.include({
             else { return _tagname; }
         };
         var _portrait = d['portrait'] || 'portrait';     // mael or female
-        this.tagname = function(v){
+        this.portrait = function(v){
             if(v){ _portrait = v; return this; }
             else { return _portrait; }
         };
@@ -237,6 +237,11 @@ IP.include({
             if(v){ _title = v; return this; }
             return _title;
         }
+        var _owner = d['owner'] || ''; // eid of PA in stance containing this ip
+        this.owner = function(v){
+            if(v){ _owner = v; return this; }
+            return _owner;
+        };
         var _config = d['config'] || [];
         this.config = function(v){
             if(v){ _config = v; return this; }
@@ -327,6 +332,11 @@ FC.include({
             if(v){ _rslst = v; return this; }
             return _rslst;
         };
+        var _owner = d['owner'] || ''; // eid of containing IT instance 
+        this.owner = function(v){
+            if(v){ _owner = v; return this; }
+            return _owner;
+        };
         var _user = d['user'] || undefined; // eid of PA who has this ftc-login
         this.user = function(v){
             if(v){ _user = v; return this; }
@@ -343,6 +353,7 @@ FC.include({
         var msg = this.base2json();
         msg['title'] = _title;
         msg['gcolor'] = _gcolor;
+        msg['owner'] = _owner;
         msg['anno'] = _anno;
         msg['rslst'] = _rslst;
         msg['contdict'] = _contdict;
@@ -533,23 +544,23 @@ Relation.include({
             if (eid){  _reid = eid;  return this; }
             else{  return _reid; };
           };
-        var _lconts = d['lconts'] || [];
-        this.lconts = function(v){
-            if(v){ _lconts = v; return this; }
-            else { return _lconts; }
+        var _lcont = d['lcont'] || [];
+        this.lcont = function(v){
+            if(v){ _lcont = v; return this; }
+            else { return _lcont; }
         };
-        var _rconts = d['rconts'] || [];
-        this.rconts = function(v){
-            if(v){ _rconts = v; return this; }
-            else { return _rconts; }
+        var _rcont = d['rcont'] || [];
+        this.rcont = function(v){
+            if(v){ _rcont = v; return this; }
+            else { return _rcont; }
         };
     },
     toJSON: function(){
         var msg = this.base2json();
         msg['leid'] = _leid;
         msg['reid'] = _reid;
-        msg['lconts'] = _lconts;
-        msg['rconts'] = _rconts;
+        msg['lcont'] = _lcont;
+        msg['rcont'] = _rcont;
         return msg; 
     }
 });

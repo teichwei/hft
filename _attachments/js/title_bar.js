@@ -80,6 +80,7 @@ var init_titlebar = function(){
 
         if (FD.loggedin){
             show_loggedin();
+            FD.store.build_tree();
         } else {
             alert('login failed, try again.');
         }

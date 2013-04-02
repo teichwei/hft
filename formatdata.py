@@ -130,7 +130,7 @@ def valuestring(v):
     if type(v) == types.UnicodeType:
         return 'u"' + v + '"'
     if type(v) == types.ListType:
-        return str([ valuestring(e) for e in v ])
+        return str([ e for e in v ])
     if type(v) == types.DictType:
         return str({k: e for k, e in v.items() })
     if type(v) == types.NoneType:
