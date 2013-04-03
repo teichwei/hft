@@ -2,7 +2,7 @@
 <html charset='utf-8'>
   <head>
     <meta charset='utf-8' />
-    <title>HFT 0.1.4c</title>
+    <title>HFT 0.1.5</title>
 
     <!-- -->
     <!-- jQuery javascript library -->
@@ -192,18 +192,20 @@
         
         <!-- the ftc-body -->
         <div id='body_container'>
+            <!-- family pane has tabs, 1st is f-tree graph -->
             <div id="tabs" class='family_pane'>
                 <ul>
                     <li><a href="#tab1"><span class='LS' tag='M3001'></span></a></li>
                     <li><a href="#tab2"><span class='LS' tag='M4001'></span></a></li>
                     <li><a href="#tab3"><span class='LS' tag='M5001'></span></a></li>
                 </ul>
-                <div id="tab1" class="canvasContainer">
-                    <canvas id="ftcanvas"></canvas>
+                <div id="tab1" class="ftgraphContainer">
+                    <div id="ftgraph"></div>
                 </div>
                 <div id="tab2">Contents of the second tab</div>
                 <div id="tab3">Contents of the third tab</div>
-            </div><!-- <div id='family_pane'> -->
+            </div><!-- end of <div id='family_pane'> -->
+            <!-- person_pane on the right. In it: up is synop, down is ip-->
             <div id='person_pane'>
                 <div id='synop'>
                     <div id='pictureframe'>

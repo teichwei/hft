@@ -5,7 +5,7 @@ var FD = {
     store: store,
     data: null,
     loggedin: false,
-    username: '',
+    loginuser: '',
     lcode: 'en',
     infocats: {
         'M7001': 'M7500',

@@ -113,7 +113,6 @@ var Store = function(){
     };
     this.authenticate = function(data, fid, usrname, psswrd){
         FD.loggedin = false;
-        FD.username = '';
         for (var i in data.rows){
             var obj = data.rows[i].value;
             if (obj._id.substr(0,7) == fid && obj._id.substr(8,2) == 'FC'){
@@ -123,7 +122,7 @@ var Store = function(){
                     obj.contdict['password'] == psswrd){
                     // hit!
                     FD.loggedin = true;
-                    FD.username = usrname;
+                    FD.loginuser = obj['user']; // eid of pa
                     return;
                 }
             }
@@ -197,22 +196,15 @@ var Store = function(){
                         it.facets = [];
                     it.facets.push(fc);
                 }
-                // in case of ftc-login fc, build pa-fc
-                /* 
-                // since pa.credential == fc.eid(), fc.user() == pa.eid()
-                // there is no need to build pa-fc relationship. It exists.
-                if (fc.user()){
-                    var pa = this.getEntity(fc.user());
-                    if (pa.credential = fc.eid()){
-                    fc.user
-                }*/
             }
         } 
+        // since pa.credential == fc.eid(), fc.user() == pa.eid()
+        // there is no need to build pa-fc relationship. It exists already.
     };// this.build_tree = function()
     /* */
 };
 
 function pageload(){
-    alert("page being loaded.");
+    //alert("page being loaded.");
 }
 

@@ -1,8 +1,9 @@
-var PVmodel = function(model){
+var PAVmodel = function(model, d){
     this.model = model;
     this.states = {
-        live: 'virtual',  // ('virtual', 'alive', 'deceased')
+        live: 'virtual',// ('virtual', 'alive', 'deceased')
         anchor: true,
+        expand: true,   // if is anchor, expand upper gen+ sibling-grp
         focus: false,
         visible: true
     };
@@ -18,5 +19,4 @@ var PVmodel = function(model){
         }
         return this;
     };
-    
 }
