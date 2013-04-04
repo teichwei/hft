@@ -1,0 +1,72 @@
+/** ---------------------------------------------------------------------------
+ * pav.css
+ * -------
+ * css definitions for pa-viewmodel PAV
+ -----------------------------------------------------------------------------*/
+/** ------------
+ * div with big radius so it becomes a circle representing anchor-circle 
+ */
+div.anchor{
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    left: -10px;
+    top: 11px;
+    z-index: 10;
+    border-radius: 6px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: Black;
+    background-color: white;
+}
+/** ------------
+ * person icon. can be male-icon or female-icon
+ */
+img.pvicon 
+{
+    width: 30px; 
+    height: 32px;
+    border-right:1px dotted green;
+}
+/** ------------
+ * name-box. can have 1 div(.fullname) or 2 div(.fname/.lname)
+ */
+div.namebox {
+    position: absolute;
+    left: 34px;     // left leaving space for icon and margin
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 105px;
+    height: 34px;
+    font-family: Times New Roman;
+    font-size: 14px;
+    //font-weight:bold;
+}
+/** ------------
+ * act-icon in div.pv, within/over(z-index=10) name-box
+ */
+img.pvact {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 124px;
+    top: 9px;
+    z-index: 10;
+}
+
+/** ------------
+ * pav div containing icon/img, name-box, act icon, anchor-circle
+ */
+div.pv {
+    position: absolute;
+    width: 140px;
+    height: 34px;   // Chrome add border to the height: 34 + 2 = 36
+    padding: 0px;
+    margin: 0px;
+    background-color: #F2FFFF;
+    border-top-right-radius: 10px 10px;     // making right end rounded
+    border-bottom-right-radius: 10px 10px;  // with 10px radius
+    border-width: 1px;
+    border-color: #3366FF;
+}
