@@ -49,7 +49,8 @@ function PAVModel(container_id, model, dict){
     // put icon picture
     var img = document.createElement("img");
     img.className = "pvicon";
-    img.setAttribute("src",(this.model.sex === "male")?"male1.jpg":"female1.jpg");
+    img.setAttribute("src", (this.model.sex === "male")?
+                            "ftc-images/male1.jpg":"ftc-images/female1.jpg");
     this.div.appendChild(img);
 
     var box = document.createElement('div');
@@ -75,22 +76,22 @@ function PAVModel(container_id, model, dict){
 
     var actimg = document.createElement('img');
     actimg.className = "pvact";
-    actimg.setAttribute('src','right-arrow.png');
+    actimg.setAttribute('src','ftc-images/right-arrow.png');
     actimg.setAttribute('id',this.model.eid+"_actimg");
     this.div.appendChild(actimg);
     
     $('#'+this.model.eid+"_actimg").contextPopup({
         items: [ 
             { label:'Some Item',
-              icon:'icons/icons/shopping-basket.png',
+              icon:'ftc-images/shopping-basket.png',
               action:function() { alert(self.model.eid+'-clicked 1') } }, 
             { label:'Another Thing', 
-              icon:'icons/icons/receipt-text.png', 
+              icon:'ftc-images/receipt-text.png', 
               action:function() { alert(self.model.eid+'-clicked 2') } },
             // null can be used to add a separator to the menu items
             null,
             { label:'Blah Blah', 
-              icon:'icons/icons/book-open-list.png', 
+              icon:'ftc-images/book-open-list.png', 
               action:function() { alert(self.model.eid+'-clicked 3') } }
         ]
     });
