@@ -5,7 +5,16 @@
 function PAVModel(container_id, model, dict){
     this.container_id = container_id;
     this.model = model;
-    this.focused = false;
+    this._focused = false;
+    this.focused = function(v){
+        if (typeof v !== "undefined"){ 
+            this._focused = v; 
+            this.div.style["background-color"] = (this._focused)? 
+                                                "#66CDAA":"#F2FFFF";
+            return this; 
+        }
+        return this._focused;
+    }
     this.isanchor = false;
     model.pv = this;
     this.div = document.createElement("div");
@@ -43,12 +52,23 @@ function PAVModel(container_id, model, dict){
     }
     this.div.appendChild(box);
 
-    // set-focus function bound to tbl.onclick
     var self = this;
     $('#'+this.model.eid() + "_nametag").live('click',function(e){
+        if (FD.focuspv !== self){
+            if (!FD.focuspv){
+                FD.focuspv = self;
+                FD.focuspv.focused(true);
+            } else {
+                FD.focuspv.focused(false);
+                FD.focuspv = self;
+                FD.focuspv.focused(true);
+            }
+        }
+        /*
         self.focused = !self.focused;
         FD.focuspv = (self.focused)? self : undefined;
         self.div.style["background-color"]=(self.focused)? "#66CDAA":"#F2FFFF";
+        */
     });
 
     var actimg = document.createElement('img');
