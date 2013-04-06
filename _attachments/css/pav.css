@@ -33,7 +33,7 @@ img.pvicon
  */
 div.namebox {
     position: absolute;
-    left: 34px;     // left leaving space for icon and margin
+    left: 34px;
     top: 0px;
     margin: 0px;
     padding: 0px;
@@ -41,7 +41,17 @@ div.namebox {
     height: 34px;
     font-family: Times New Roman;
     font-size: 14px;
+    font-style: normal;
     //font-weight:bold;
+}
+/** ------------
+ * name in 1 line in div.namebox
+ */
+div.fullname {
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    font-weight: bold;
 }
 /** ------------
  * act-icon in div.pv, within/over(z-index=10) name-box
@@ -61,12 +71,12 @@ img.pvact {
 div.pv {
     position: absolute;
     width: 140px;
-    height: 34px;   // Chrome add border to the height: 34 + 2 = 36
+    height: 34px;   /* Chrome add border to the height: 34 + 2 = 36 */
     padding: 0px;
     margin: 0px;
     background-color: #F2FFFF;
-    border-top-right-radius: 10px 10px;     // making right end rounded
-    border-bottom-right-radius: 10px 10px;  // with 10px radius
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     border-width: 1px;
     border-color: #3366FF;
 }

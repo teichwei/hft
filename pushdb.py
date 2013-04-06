@@ -1,10 +1,14 @@
+# -----------------------------------------------------------------------------
 # pushdb.py     2013-03-24 Jianchi Wei
 # purpose: push all docs in docs.buf to db
+# --------
+# 2013-04-06: added get_cmdline_params to read cmd-line parameters, that
+#             can specify db-name and server url, overriding defaults.
 # -----------------------------------------------------------------------------
 import couchdb
 import sys, os, os.path, codecs
-URL = 'http://localhost:5984'
-dbname = 'hftdb'
+DEF_URL = 'http://localhost:5984'
+DEF_DBNAME = 'hftdb'
 rootdir = '.data/'
 # -----------------------------------------------------------------------------
 # there was problem with unicode when db.save(doc). That was when non-ascii 
@@ -55,15 +59,30 @@ def pushfid(fid, db):
         print '-'*80
     db.commit()
 
-def main(dbn):
-    db = getdb(URL, dbn)
+def main(url, dbn):
+    db = getdb(url, dbn)
     #fids = [fn[6:] for fn in glob(".data/*") if not fn.endswith(".bak")]
     #for fid in fids:
     #    pushfid(fid, db, 'pushdb.log')
     cleanup("3TXE45N", db)
     pushfid("3TXE45N", db)
-        
+
+def get_cmdline_params():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', 
+                        '--database-name', 
+                        help='database name(def.: %s)'%(DEF_DBNAME), 
+                        default=DEF_DBNAME)
+    parser.add_argument('-t', 
+                        '--target-server-url', 
+                        help='target db server url(def.: %s)'%(DEF_URL),
+                        default=DEF_URL)
+    args = parser.parse_args()
+    #print 'database name:',args.database_name
+    #print 'target server url:',args.target_name
+    return args.database_name, args.target_server_url
+
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        dbname = sys.argv[1]
-    main(dbname)
+    dbname, url = get_cmdline_params()
+    main(url, dbname)

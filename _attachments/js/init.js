@@ -6,6 +6,7 @@ var FD = {
     data: null,
     loggedin: false,
     loginuser: '',
+    focuspv: undefined,
     lcode: 'en',
     infocats: {
         'M7001': 'M7500',

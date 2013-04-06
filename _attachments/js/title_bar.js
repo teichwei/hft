@@ -81,6 +81,9 @@ var init_titlebar = function(){
         if (FD.loggedin){
             show_loggedin();
             FD.store.build_tree();
+            var pam = FD.store.getEntity(FD.loginuser);
+            var pav = new PAVModel("ftgraph", pam, 
+                                  {x: 20, y: 100, anchor: false, focus: true });
         } else {
             alert('login failed, try again.');
         }

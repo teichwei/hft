@@ -133,7 +133,7 @@ var Class = function(){
         if (included) included(klass);
     };
     return klass;
-};
+}; // Class
 //
 //==============================================================================
 // family class for a FTC account
@@ -259,7 +259,7 @@ IP.include({
 // item of info-pane (entries)
 var IT = new Class();  // chronolgy entry in chronolgy-info-pane
 IT.include({
-    intialize: function(d){
+    initialize: function(d){
         console.log('initialize IT');
         
         // title is the list item name, appearing in info-pane
@@ -507,7 +507,7 @@ var TX = function(se,vid){
 // SE is session class
 var SE = new Class();// fid, _id
 SE.include({
-    intialize: function(d){
+    initialize: function(d){
         // 30 min from now      = 30x60x1000 = 1800000
         this.expire = (new Date()).getTime() + 1800000;
         this.cid = 'SE';
