@@ -47,19 +47,23 @@ img#portrait {
 div#synopbox {
     position: absolute;
     top: 0px;
-    left: 94px;
-    width: 180px;
+    left: 85px;
+    background-image: url(../ftc-images/synboxframe360x200a.jpg);
+    background-size: 100% 100%, 100% 100%;
+    width: 169px;
     height: 100px;
 }
 /* list of 4 text-lines that summarizes the person */
 div#synopbox ul {
     position: absolute;
-    top: -10px;
-    left: -42px;
+    top: 3px;
+    left: -17px;
+    text-align: center;
     list-style-type: none;
 }
 div#synopbox li {
     font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 13px;
     font-style: italic;
 }
 /* small bar containing info-boards select */
