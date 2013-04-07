@@ -24,6 +24,8 @@ div.anchor{
  */
 img.pvicon 
 {
+    margin-top: 1px;
+    margin-bottom: 1px;
     width: 30px; 
     height: 32px;
     border-right:1px dotted green;

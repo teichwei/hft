@@ -10,7 +10,8 @@ function PAVModel(container_id, model, dict){
         if (typeof v !== "undefined"){ 
             this._focused = v; 
             this.div.style["background-color"] = (this._focused)? 
-                                                "#66CDAA":"#F2FFFF";
+                                                    "#66CDAA":"#F2FFFF";
+            if(v) this.setsynop();
             return this; 
         }
         return this._focused;
@@ -55,20 +56,10 @@ function PAVModel(container_id, model, dict){
     var self = this;
     $('#'+this.model.eid() + "_nametag").live('click',function(e){
         if (FD.focuspv !== self){
-            if (!FD.focuspv){
-                FD.focuspv = self;
-                FD.focuspv.focused(true);
-            } else {
-                FD.focuspv.focused(false);
-                FD.focuspv = self;
-                FD.focuspv.focused(true);
-            }
+            FD.focuspv.focused(false);
+            FD.focuspv = self;
+            FD.focuspv.focused(true);
         }
-        /*
-        self.focused = !self.focused;
-        FD.focuspv = (self.focused)? self : undefined;
-        self.div.style["background-color"]=(self.focused)? "#66CDAA":"#F2FFFF";
-        */
     });
 
     var actimg = document.createElement('img');
@@ -104,6 +95,23 @@ function PAVModel(container_id, model, dict){
 
     $('#' + this.container_id).append(this.div);
 
+    this.setsynop = function(){
+        var bgframe = document.getElementById('pictureframe');
+        var frame_png = 'PicFrame1.jpg';
+        bgframe.style.backgroundImage = "url(ftc-images/"+frame_png+")";
+
+        var portimg = document.getElementById('portrait');
+        var rs = FD.store.getEntity(this.model.portrait());
+        var portrait_path = '/hftdb/'+rs.id()+'/'+rs.name();
+        portimg.setAttribute('src', portrait_path);
+        return this;
+        /*
+        var portrait_path = '3TXE45N-RS-MlKOVR1365287150646_1/P00019.jpg'
+        var portimg = document.getElementById('portrait');
+        portimg.setAttribute('src', '/hftdb/'+portrait_path);
+        */
+    }
+    
     this.showhide = function(){
         this.div.style.display=(this.div.style.display !='none')?'none':'block';
     };

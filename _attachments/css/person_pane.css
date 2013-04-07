@@ -1,5 +1,6 @@
 /* -----------------------------------------------------------------------------
- * person-pane css
+ * person-pane: on the right side of the ftc-body.
+ *  synop + cat_selectbar + infos
  * ---------------------------------------------------------------------------*/
 div#person_pane {
     position: absolute;
@@ -24,20 +25,24 @@ div#synop {
 div#pictureframe {
     background-margin: 0px;
     background-padding: 0px;
-    background-image: url(../ftc-images/PicFrame1.jpg);
     background-size: 100% auto, auto auto;
     width: 84px;
     height: 105px;
     max-width: 84px;
     max-height: 105px;
     margin: 0px;
+    z-index: 10;
+}
+div.portrait_box {
+    position: absolute;
+    top: 17px;
+    left: 16px;
+    width: 53px;
+    height: 70px;
 }
 img#portrait {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    max-width: 53px;
-    max-height: auto;
+    width: 100%;
+    height: 100%;
 }
 div#synopbox {
     position: absolute;

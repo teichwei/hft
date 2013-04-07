@@ -176,9 +176,6 @@
             </div><!-- end of div#language_select -->
             
             <div id='ftclogo' class='LS' tag='M1000'></div>
-            <!--
-            <img id='logoicon' src='ftc-images/waveicon2.png'/>
-            -->
             <img id='logoicon' src='ftc-images/crownseal1.png'/>
             <div id='username'>admin</div>
             <div id='accounsettings'></div>
@@ -194,7 +191,7 @@
             <div id='username'></div>
         </div><!-- end of div#ftc-titlebar -->
         
-        <!-- the ftc-body -->
+        <!-- the body_container = family_pane(left) + person_pane(right) -->
         <div id='body_container'>
             <!-- family pane has tabs, 1st is f-tree graph -->
             <div id="tabs" class='family_pane'>
@@ -213,7 +210,9 @@
             <div id='person_pane'>
                 <div id='synop'>
                     <div id='pictureframe'>
-                      <img id='portrait' src='ftc-images/portrait.jpg' />
+                        <div class='portrait_box'>
+                        <img id='portrait' />
+                        </div>
                     </div>
                     <div id='synopbox'>
                         <ul>

@@ -84,6 +84,8 @@ var init_titlebar = function(){
             var pam = FD.store.getEntity(FD.loginuser);
             var pav = new PAVModel("ftgraph", pam, 
                                   {x: 20, y: 100, anchor: false, focus: true });
+            // FD.loginuser get focus set
+            FD.focuspv = pav.focused(true);
             var pam2 = pam.spouses[2].woman[0];
             var pav2 = new PAVModel("ftgraph", pam2, 
                                   {x: 20, y: 160, anchor: false, focus: true });
