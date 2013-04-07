@@ -96,20 +96,22 @@ function PAVModel(container_id, model, dict){
     $('#' + this.container_id).append(this.div);
 
     this.setsynop = function(){
+        // set the portrait of the person
         var bgframe = document.getElementById('pictureframe');
         var frame_png = 'PicFrame1.jpg';
         bgframe.style.backgroundImage = "url(ftc-images/"+frame_png+")";
-
         var portimg = document.getElementById('portrait');
         var rs = FD.store.getEntity(this.model.portrait());
         var portrait_path = '/hftdb/'+rs.id()+'/'+rs.name();
         portimg.setAttribute('src', portrait_path);
+        
+        // set synopsis of the person
+        var lines = this.model.synop().split('@');
+        $('#synop-line1').empty().text(lines[0]);
+        $('#synop-line2').empty().text(lines[1]);
+        $('#synop-line3').empty().text(lines[2]);
+        $('#synop-line4').empty().text(lines[3]);
         return this;
-        /*
-        var portrait_path = '3TXE45N-RS-MlKOVR1365287150646_1/P00019.jpg'
-        var portimg = document.getElementById('portrait');
-        portimg.setAttribute('src', '/hftdb/'+portrait_path);
-        */
     }
     
     this.showhide = function(){

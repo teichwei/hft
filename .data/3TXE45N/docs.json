@@ -37,7 +37,7 @@
         "sex": "male",
         "dob": "18931226",
         "dod": "19760909",
-        "synop": u"mao zedong",
+        "synop": u"毛泽东@1893.12 - 1976.9.9@生于湖南湘潭@中国共产党领袖",
         # ----------------------------------------------------------------------
         # credential is optional. Only for login user. Pointing to a FC inst.
         # --------------
@@ -68,7 +68,7 @@
         "portrait": "3TXE45N-RS-P00013",
         "dob": "19140319",
         "dod": "19910514",
-        "synop": u"JQ - Mao zedong wife4"
+        "synop": u"江青@1914.3 - 1991.5.14@生于山东省诸城县东关街@四人帮之首"
     },
     {   "_id": "3TXE45N-PA-000005",
         "tx": "0",
@@ -77,7 +77,7 @@
         "portrait": "3TXE45N-RS-P00002",
         "dob": "19090901",
         "dod": "19840419",
-        "synop": u"He Zizhen - Mao zedong wife3"
+        "synop": u"贺子珍@1909.9.1 - 1984.4.19@江西省永新县黄竹岭人@毛泽东的第三任妻子"
     },
     {   "_id": "3TXE45N-PA-000006",
         "tx": "0",
@@ -86,7 +86,7 @@
         "portrait": "3TXE45N-RS-P00028",
         "dob": "19011106",
         "dod": "19301114",
-        "synop": u"Yang KH - Mao zedong wife2"
+        "synop": u"杨开慧@1901.6 - 1930.11.14@生于湖南省长沙县板仓乡@毛泽东的第二任妻子"
     },
     {   "_id": "3TXE45N-PA-000007",
         "tx": "0",
@@ -95,7 +95,7 @@
         "portrait": "3TXE45N-RS-P00052",  # icon - no pic available
         "dob": "18891020",
         "dod": "19100211",
-        "synop": u"Luo yixiu- Mao zedong wife1"
+        "synop": u"罗一秀@1889.10.20 - 1910.2@生于湖南省韶山@毛泽东原配"
     },
     {   "_id": "3TXE45N-PA-000008",
         "tx": "0",

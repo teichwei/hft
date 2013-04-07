@@ -57,14 +57,16 @@ div#synopbox {
 div#synopbox ul {
     position: absolute;
     top: 3px;
-    left: -17px;
+    left: -25px;
     text-align: center;
     list-style-type: none;
 }
 div#synopbox li {
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 13px;
-    font-style: italic;
+    font-size: 11px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: bold;
 }
 /* small bar containing info-boards select */
 div#cat_selectbar {

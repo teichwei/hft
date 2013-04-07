@@ -83,12 +83,24 @@ var init_titlebar = function(){
             FD.store.build_tree();
             var pam = FD.store.getEntity(FD.loginuser);
             var pav = new PAVModel("ftgraph", pam, 
-                                  {x: 20, y: 100, anchor: false, focus: true });
+                                  {x: 60, y: 100, anchor: false, focus: true });
             // FD.loginuser get focus set
             FD.focuspv = pav.focused(true);
-            var pam2 = pam.spouses[2].woman[0];
+
+            var pam1 = pam.spouses[0].woman[0];
+            var pav1 = new PAVModel("ftgraph", pam1, 
+                                  {x: 60, y: 160, anchor: false, focus: true });
+            var pam2 = pam.spouses[1].woman[0];
             var pav2 = new PAVModel("ftgraph", pam2, 
-                                  {x: 20, y: 160, anchor: false, focus: true });
+                                  {x: 60, y: 220, anchor: false, focus: true });
+            
+            var pam3 = pam.spouses[2].woman[0];
+            var pav3 = new PAVModel("ftgraph", pam3, 
+                                  {x: 60, y: 280, anchor: false, focus: true });
+            
+            var pam4 = pam.spouses[3].woman[0];
+            var pav4 = new PAVModel("ftgraph", pam4, 
+                                  {x: 60, y: 340, anchor: false, focus: true });
         } else {
             alert('login failed, try again.');
         }
