@@ -221,8 +221,8 @@
     },
     M1000:{
         descr: 'FTC logo',
-        en: 'FTC',
-        zh: '族记&足迹',
+        en: 'The Royal Folder',
+        zh: '贵族文档',
         de: 'Der Weg',
         fr: 'FTC in fr',
         it: 'FTC in it',

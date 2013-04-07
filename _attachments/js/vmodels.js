@@ -9,7 +9,10 @@ function PAVModel(container_id, model, dict){
     this.focused = function(v){
         if (typeof v !== "undefined"){ 
             this._focused = v; 
-            this.div.style["background-color"] = (this._focused)? 
+            // this line works fine with Chrom and IE, but not FF.
+            // I have to use.backgroundColor in stead of ['background-color']
+            //this.div.style["background-color"] = (this._focused)? 
+            this.div.style.backgroundColor = (this._focused)? 
                                                     "#66CDAA":"#F2FFFF";
             if(v) this.setsynop();
             return this; 
@@ -89,7 +92,8 @@ function PAVModel(container_id, model, dict){
     this.anchor.setAttribute("id", this.model.eid() + "_anchor");
     $('#'+self.model.eid() + "_anchor").live('click', function(e){
         self.isanchor = !self.isanchor;
-        self.anchor.style["background-color"]=(self.isanchor) ? "red":"white";
+        //self.anchor.style["background-color"]=(self.isanchor) ? "red":"white";
+        self.anchor.style.backgroundColor=(self.isanchor) ? "red":"white";
     });
     this.div.appendChild(this.anchor);
 

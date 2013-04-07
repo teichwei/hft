@@ -68,7 +68,8 @@ div#ftc-titlebar {
 div#ftclogo {
     position: absolute;
     font-family: fantasy;
-    font-style: italic;
+    font-style: normal;
+    font-weight: bold;
     font-stretch: expanded;
     font-size: 34px;
     width: 200px;
