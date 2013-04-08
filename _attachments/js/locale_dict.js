@@ -222,7 +222,8 @@
     M1000:{
         descr: 'FTC logo',
         en: 'The Royal Folder',
-        zh: '贵族文档',
+        // 辉煌人生
+        zh: '此生辉煌', 
         de: 'Der Weg',
         fr: 'FTC in fr',
         it: 'FTC in it',
@@ -659,6 +660,28 @@
         ru: 'poetry in ru',
         ko: 'poetry in ko',
         th: 'poetry in th'
+    },
+    M7111:{
+        descr: 'nutshell info about a person',
+        en: 'Nutshell',
+        zh: '简介',
+        de: 'In der Kurze',
+        fr: 'Nutshell in fr',
+        it: 'Nutshell in it',
+        sv: 'Nutshell in sv',
+        es: 'Nutshell in es',
+        cs: 'Nutshell in cs',
+        da: 'Nutshell in da',
+        nl: 'Nutshell in nl',
+        fi: 'Nutshell in fi',
+        hu: 'Nutshell in hu',
+        ja: 'Nutshell in ja',
+        no: 'Nutshell in no',
+        pl: 'Nutshell in pl',
+        pt: 'Nutshell in pt',
+        ru: 'Nutshell in ru',
+        ko: 'Nutshell in ko',
+        th: 'Nutshell in th'
     },
     M7500:{
         descr: 'choice(sel-option) for access control',

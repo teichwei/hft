@@ -16,8 +16,13 @@ var refresh_catSelect = function(){
     $("#infoCatSelect").val(FD.infoCatSelected);
 }
 
+var ipchange = function(v){
+    alert(v);
+}
+
 /* adding all ib categories for the user to pick from */
-var add_ib_select_options = function(){
+var init_ib_select_options = function(){
+    /* ib_select is the select on Dlg_newib */
     /* clear the option list first*/
     $('#ib_select').find('option').remove();
     
@@ -82,7 +87,7 @@ var add_ib_select_options = function(){
     }));
 }
 /* Adding the access rights */
-var add_ib_acc_select_options = function(){
+var init_ib_acc_select_options = function(){
     $('#ib_acc_select').find('option').remove();
     
     $('#ib_acc_select').append($('<option>', {
@@ -158,8 +163,8 @@ var init_personpane = function(){
                     }
                 }
             })
-            add_ib_select_options();
-            add_ib_acc_select_options();
+            init_ib_select_options();
+            init_ib_acc_select_options();
             dlg.dialog('open');
             return false;
         });

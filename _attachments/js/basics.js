@@ -197,10 +197,20 @@ PA.include({
             if(v){ _portrait = v; return this; }
             else { return _portrait; }
         };
-        this._synop = d['synop'] || 'synop';    // short info about the person
-        this.synop = function(v){
-            if(v){ this._synop = v; return this; }
-            else { return this._synop; }
+        var _oneword = d['oneword'] || '';   // one word about the person
+        this.oneword = function(v){
+            if(v){ this._oneword = v; return this; }
+            else { return this._oneword; }
+        };
+        var _origin = d['origin'] || '';     // place of person's origin
+        this.origin = function(v){
+            if(v){ this._origin = v; return this; }
+            else { return this._origin; }
+        };
+        var _nutshell = d['nutshell'] || ''; // short info about the person
+        this.oneword = function(v){
+            if(v){ this._nutshell = v; return this; }
+            else { return this._nutshell; }
         };
         var _ftc_credential = d['ftc_credential'] || undefined;
         this.ftc_credential = function(v){
@@ -215,7 +225,8 @@ PA.include({
         msg['sex'] = _sex;
         msg['tagname'] = _tagname;
         msg['portrait'] = _portrait;
-        msg['synop'] = _synop;
+        msg['oneword'] = _oneword;
+        msg['nutshell'] = _nutshell;
         // user with ftc-login acct(FC with purpose='ftc-login') has this ref.
         if (_ftc_credential){
             msg['ftc_credential'] = _ftc_credential;
@@ -223,6 +234,12 @@ PA.include({
         return msg;
     }
 });// PA.include
+
+// nutshell info about a person. This will fill the info pane
+// when first the person is in focus, and the ip-selection is set
+// to "Nutshell"/M7111. pa will have a ref named pa.nutshells []
+// nu will have a ref named owner
+// - WHY this? just add a new field in PA: nutshell
 
 var IP = new Class();
 IP.include({
@@ -252,6 +269,7 @@ IP.include({
         var msg = this.base2json();
         msg['title'] = _title;
         msg['name'] = _name;
+        msg['owner'] = _owner;
         msg['config'] = _config;
     }
 }); // IP.include

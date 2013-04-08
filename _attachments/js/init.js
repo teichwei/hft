@@ -9,12 +9,15 @@ var FD = {
     focuspv: undefined,
     lcode: 'en',
     infocats: {
-        'M7001': 'M7500',
+    //  <title>: <access>
+        'M7001': 'M7500'
+        /*
         'M7002': 'M7500',
         'M7003': 'M7500',
         'M7004': 'M7500',
         'M7005': 'M7500',
         'M7006': 'M7500'
+        */
     },
     infoCatSelected: 'M7001'
 };

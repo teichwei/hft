@@ -14,7 +14,7 @@ function PAVModel(container_id, model, dict){
             //this.div.style["background-color"] = (this._focused)? 
             this.div.style.backgroundColor = (this._focused)? 
                                                     "#66CDAA":"#F2FFFF";
-            if(v) this.setsynop();
+            if(v) this.setsynop().setinfopanes();
             return this; 
         }
         return this._focused;
@@ -99,6 +99,7 @@ function PAVModel(container_id, model, dict){
 
     $('#' + this.container_id).append(this.div);
 
+    // update the synopsis box for this person
     this.setsynop = function(){
         // set the portrait of the person
         var bgframe = document.getElementById('pictureframe');
@@ -109,15 +110,27 @@ function PAVModel(container_id, model, dict){
         var portrait_path = '/hftdb/'+rs.id()+'/'+rs.name();
         portimg.setAttribute('src', portrait_path);
         
-        // set synopsis of the person
+        // set 4 lines of synopsis of the person. @ is the delimitor
         var lines = this.model.synop().split('@');
         $('#synop-line1').empty().text(lines[0]);
         $('#synop-line2').empty().text(lines[1]);
         $('#synop-line3').empty().text(lines[2]);
         $('#synop-line4').empty().text(lines[3]);
         return this;
-    }
-    
+    };
+    // update ips for this person
+    this.setinfopanes = function(){
+        // first clear FD.infocats
+        FD.infocats = {};
+        
+        // fill in FD.infocats with what the person has for ips.
+        // M7500 is for access-control (all family members - default)
+        for (var i in this.model.ips){
+            FD.infocats[this.model.ips[i].name()] = 'M7500';
+        };
+        refresh_catSelect();
+        return this;
+    };
     this.showhide = function(){
         this.div.style.display=(this.div.style.display !='none')?'none':'block';
     };
