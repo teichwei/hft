@@ -135,13 +135,15 @@ function PAVModel(container_id, model, dict){
     // update ips for this person
     this.setinfopanes = function(){
         // first clear FD.infocats
-        FD.infocats = {};
+        FD.infocats = {'M7111': 'M7500'};   // everyone must have nutshell
         
         // fill in FD.infocats with what the person has for ips.
         // M7500 is for access-control (all family members - default)
         for (var i in this.model.ips){
             FD.infocats[this.model.ips[i].name()] = 'M7500';
         };
+        // set nutshell to be selected
+        FD.infoCatSelected = "M7111";
         refresh_catSelect();
         return this;
     };
