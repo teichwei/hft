@@ -99,6 +99,19 @@ function PAVModel(container_id, model, dict){
 
     $('#' + this.container_id).append(this.div);
 
+    this._hdate = function(d){
+        if(d && d.length > 2){
+            if(d.length ==8){
+                return d.substr(0,4)+'.'+d.substr(4,2)+'.'+d.substr(6,2);
+            } else if (d.length == 6){
+                return d.substr(0,4)+'.'+d.substr(4.2);
+            } else if(d.length == 4){
+                return d;
+            }
+        } else {
+            return '';
+        }
+    }
     // update the synopsis box for this person
     this.setsynop = function(){
         // set the portrait of the person
@@ -110,12 +123,13 @@ function PAVModel(container_id, model, dict){
         var portrait_path = '/hftdb/'+rs.id()+'/'+rs.name();
         portimg.setAttribute('src', portrait_path);
         
-        // set 4 lines of synopsis of the person. @ is the delimitor
-        var lines = this.model.synop().split('@');
-        $('#synop-line1').empty().text(lines[0]);
-        $('#synop-line2').empty().text(lines[1]);
-        $('#synop-line3').empty().text(lines[2]);
-        $('#synop-line4').empty().text(lines[3]);
+        // set 4 lines of person's synopsis
+        var secondline = this._hdate(this.model.dob())+' - '+
+                         this._hdate(this.model.dod());
+        $('#synop-line1').empty().text(this.model.tagname());
+        $('#synop-line2').empty().text(secondline);
+        $('#synop-line3').empty().text(this.model.origin());
+        $('#synop-line4').empty().text(this.model.oneword());
         return this;
     };
     // update ips for this person

@@ -200,17 +200,17 @@ PA.include({
         var _oneword = d['oneword'] || '';   // one word about the person
         this.oneword = function(v){
             if(v){ this._oneword = v; return this; }
-            else { return this._oneword; }
+            else { return _oneword; }
         };
         var _origin = d['origin'] || '';     // place of person's origin
         this.origin = function(v){
             if(v){ this._origin = v; return this; }
-            else { return this._origin; }
+            else { return _origin; }
         };
         var _nutshell = d['nutshell'] || ''; // short info about the person
-        this.oneword = function(v){
+        this.nutshell = function(v){
             if(v){ this._nutshell = v; return this; }
-            else { return this._nutshell; }
+            else { return _nutshell; }
         };
         var _ftc_credential = d['ftc_credential'] || undefined;
         this.ftc_credential = function(v){
